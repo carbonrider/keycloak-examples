@@ -9,7 +9,7 @@
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<name>Keycloak Vault example</name>
-	<description>Demonstrated vault extension supported by Jboss Keycloak.</description>
+	<description>Demonstrates vault extension supported by Jboss Keycloak.</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

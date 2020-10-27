@@ -11,15 +11,17 @@ import java.util.Properties;
 
 public class CustomKeycloakVault implements SecurityVault {
     protected boolean finishedInit = false;
-	
-	private Properties properties;
+
+    private Properties props;
 
     /*
      * @see org.jboss.security.vault.SecurityVault#init(java.util.Map)
      */
     public void init(Map<String, Object> options) throws SecurityVaultException {
-		this.properties = new Properties();
-		this.properties.put("password", System.getenv("DB_PASSWORD"));
+        props = new Properties();
+
+        props.setProperty("DB_PASSWORD", System.getenv("ENV_DB_PASSWORD"));
+
         finishedInit = true;
     }
 
@@ -41,7 +43,7 @@ public class CustomKeycloakVault implements SecurityVault {
      * @see org.jboss.security.vault.SecurityVault#keyList()
      */
     public Set<String> keyList() throws SecurityVaultException {
-        return new HashSet<String>(Arrays.asList("password"));
+        return new HashSet<String>(Arrays.asList("DB_PASSWORD"));
     }
 
     /*
@@ -58,9 +60,8 @@ public class CustomKeycloakVault implements SecurityVault {
      * java.lang.String, byte[])
      */
     public char[] retrieve(String vaultBlock, String attributeName, byte[] sharedKey) throws SecurityVaultException {
-        String attributeValue = (String)this.properties.get(attributeName);
-        return attributeValue.toCharArray();
-
+        String value = this.props.getProperty(attributeName);
+        return value.toCharArray();
     }
 
     /**
