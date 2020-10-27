@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+	<id>dist</id>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>target</directory>
+			<outputDirectory>modules/com/carbonrider/keycloak/vault/main
+			</outputDirectory>
+			<includes>
+				<include>**/*.jar</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+	<files>
+		<file>
+			<source>target/classes/vault-module.xml</source>
+			<outputDirectory>modules/com/carbonrider/keycloak/vault/main
+			</outputDirectory>
+			<destName>module.xml</destName>
+			<filtered>true</filtered>
+		</file>
+	</files>
+	<!-- <dependencySets> <dependencySet> <outputDirectory>modules/org/jboss/security/fips/main</outputDirectory> 
+		<includes> <include>org.bouncycastle:bc-fips</include> </includes> </dependencySet> 
+		</dependencySets> -->
+
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>modules/com/carbonrider/keycloak/vault/main
+			</outputDirectory>
+		</dependencySet>
+	</dependencySets>
+</assembly>
